@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TP5MVC.Models.Employee>
+
+
+<a asp-action="Create" asp-controller="Employee" class="btn btn-outline-warning">Create</a>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Contect</th>
+        <th>Image</th> 
+        <th>Action</th>
+
+    </tr>
+    @foreach (var emp in Model)
+    {
+<tr>
+    <td>@emp.Id</td>
+    <td>@emp.Firstname</td>
+    <td>@emp.Lastname</td>
+    <td>@emp.Email</td>
+    <td>@emp.Contact</td>
+    <td> <img src="@emp.Image" height="60" width="60" /></td> 
+    
+    <td>
+        <a asp-action="Edit" asp-controller="Employee" asp-route-id="@emp.Id" onclick="return confirm
+                ('Are you sure to Edit is record ?')" class="btn btn-primary">Edit</a> ||
+        <a asp-action="Delete" asp-controller="Employee" asp-route-id="@emp.Id" onclick="return confirm
+                ('Are you sure to delete is record')" class=" btn btn-danger">Delete</a>
+    </td>
+
+</tr>
+    }
+</table>
